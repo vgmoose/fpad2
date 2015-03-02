@@ -10,13 +10,46 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (IBAction)startButtonPushed:(id)sender
+{
+    // get the window object
+    NSWindow* window = [[[NSApplication sharedApplication] windows] objectAtIndex:0];
+    
+    // hide or show the title bar
+    if (self.activated)
+    {
+        [window setStyleMask:NSClosableWindowMask|NSMiniaturizableWindowMask|NSTitledWindowMask|NSResizableWindowMask];
+        
+        CGRect r = window.frame;
+        
+        [window setFrame:NSMakeRect(0.f, 0.f, 0.f, 0.f) display:NO animate:NO];
+        
+        [window setFrame:r display:YES animate:NO];
+
+    }
+    else
+        [window setStyleMask:NSBorderlessWindowMask];
+    
+    
+    // toggle activated state
+    self.activated = !self.activated;
+    
+    // get appropriate string text
+    NSString* startOrStop = self.activated? @"Stop" : @"Start";
+    
+    // change text of the button
+    ((NSButton*)sender).title = [NSString stringWithFormat:@"%@ Fingerpad2", startOrStop];
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
 }
 
-- (void)setRepresentedObject:(id)representedObject {
+- (void)setRepresentedObject:(id)representedObject
+{
     [super setRepresentedObject:representedObject];
 
     // Update the view, if already loaded.
