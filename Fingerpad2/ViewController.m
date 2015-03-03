@@ -20,15 +20,26 @@
     {
         [window setStyleMask:NSClosableWindowMask|NSMiniaturizableWindowMask|NSTitledWindowMask|NSResizableWindowMask];
         
+        // redraw the window
         CGRect r = window.frame;
-        
         [window setFrame:NSMakeRect(0.f, 0.f, 0.f, 0.f) display:NO animate:NO];
-        
         [window setFrame:r display:YES animate:NO];
+        
+        // re-set the title
+        [window setTitle:@"Fingerpad2"];
+        
+        // unset always on top
+        [window setLevel:NO];
 
+        
     }
     else
-        [window setStyleMask:NSBorderlessWindowMask];
+    {
+        [window setStyleMask:NSBorderlessWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask];
+        
+        // set always on top
+        [window setLevel:NSFloatingWindowLevel];
+    }
     
     
     // toggle activated state
@@ -41,11 +52,70 @@
     ((NSButton*)sender).title = [NSString stringWithFormat:@"%@ Fingerpad2", startOrStop];
 }
 
+- (void)updateRectPatches:(float)percent
+{
+    [self updateRect:Top withPercent:percent];
+    [self updateRect:Bottom withPercent:percent];
+    [self updateRect:Left withPercent:percent];
+    [self updateRect:Right withPercent:percent];
+}
+
+- (void)updateRect:(int)position withPercent:(float)percent
+{
+    NSArray* views = @[_topView, _botView, _leftView, _rightView];
+    NSView* activeView = views[position];
+    
+    CGRect targetFrame = self.view.frame;
+    CALayer *viewLayer = [CALayer layer];
+    
+    switch(position)
+    {
+        case Top:
+        case Bottom:
+            targetFrame.size.height *= percent;
+            [viewLayer setBackgroundColor:CGColorCreateGenericRGB(1.0, 0.0, 0.0, 0.4)];
+            break;
+        case Left:
+        case Right:
+            targetFrame.size.width *= percent;
+            [viewLayer setBackgroundColor:CGColorCreateGenericRGB(0.0, 0.0, 1.0, 0.4)];
+    }
+    
+    if (position == Top)
+        targetFrame.origin.y = self.view.frame.size.height*(1-percent);
+    else if (position == Right)
+        targetFrame.origin.x = self.view.frame.size.width*(1-percent);
+    
+    [activeView setFrame:targetFrame];
+    [activeView setWantsLayer:YES];
+    [activeView setLayer:viewLayer];
+}
+
+- (IBAction)adjustSlider:(id)sender
+{
+    [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*2))];
+}
+
+- (void)initRectPatches
+{
+    _topView = [[NSView alloc] initWithFrame:self.view.frame];
+    _botView = [[NSView alloc] initWithFrame:self.view.frame];
+    _leftView = [[NSView alloc] initWithFrame:self.view.frame];
+    _rightView = [[NSView alloc] initWithFrame:self.view.frame];
+    
+    [self.view addSubview:_topView];
+    [self.view addSubview:_botView];
+    [self.view addSubview:_leftView];
+    [self.view addSubview:_rightView];
+
+    
+    [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*2))];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
+    [self initRectPatches];
 }
 
 - (void)setRepresentedObject:(id)representedObject

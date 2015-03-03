@@ -9,5 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ViewController : NSViewController
+@property (weak) IBOutlet NSSlider *sliderBar;
 @property BOOL activated;
+@property NSView* topView;
+@property NSView* botView;
+@property NSView* leftView;
+@property NSView* rightView;
 @end
+
+typedef enum{
+    Top=0, Bottom=1, Left=2, Right=3
+} Position;

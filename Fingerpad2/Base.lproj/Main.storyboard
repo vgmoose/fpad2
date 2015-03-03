@@ -650,10 +650,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Fingerpad2" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="585" y="405" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -669,11 +669,21 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <userGuides>
+                            <userLayoutGuide location="232" affinity="minY"/>
+                        </userGuides>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Ag-nv-OPB">
-                                <rect key="frame" x="168" y="118" width="144" height="32"/>
+                            <slider verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WhA-yx-ouQ">
+                                <rect key="frame" x="192" y="243" width="96" height="21"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="60" tickMarkPosition="above" sliderType="linear" id="UNn-Zj-qRO"/>
+                                <connections>
+                                    <action selector="adjustSlider:" target="XfG-lQ-9wD" id="9BP-Ub-RDw"/>
+                                </connections>
+                            </slider>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ag-nv-OPB">
+                                <rect key="frame" x="168" y="208" width="144" height="32"/>
                                 <buttonCell key="cell" type="push" title="Start Fingerpad2" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gdM-NQ-pGl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -682,12 +692,26 @@
                                     </connections>
                                 </buttonCell>
                             </button>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dBc-Qj-uK0">
+                                <rect key="frame" x="181" y="184" width="119" height="18"/>
+                                <buttonCell key="cell" type="check" title="Intercept Clicks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uHZ-j6-GlL">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="dBc-Qj-uK0" secondAttribute="centerX" id="5Np-l9-Ieg"/>
                             <constraint firstAttribute="centerY" secondItem="4Ag-nv-OPB" secondAttribute="centerY" id="I1R-Th-fXI"/>
                             <constraint firstAttribute="centerX" secondItem="4Ag-nv-OPB" secondAttribute="centerX" id="Kmv-2Q-wwv"/>
+                            <constraint firstAttribute="centerX" secondItem="WhA-yx-ouQ" secondAttribute="centerX" id="LJR-Ip-j0s"/>
+                            <constraint firstItem="dBc-Qj-uK0" firstAttribute="top" secondItem="4Ag-nv-OPB" secondAttribute="bottom" constant="9" id="X3h-aQ-GqT"/>
+                            <constraint firstItem="4Ag-nv-OPB" firstAttribute="top" secondItem="WhA-yx-ouQ" secondAttribute="bottom" constant="9" id="xMi-gG-IPv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sliderBar" destination="WhA-yx-ouQ" id="CoF-SA-yZa"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
