@@ -677,7 +677,7 @@
                         <subviews>
                             <slider verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WhA-yx-ouQ">
                                 <rect key="frame" x="192" y="243" width="96" height="21"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="60" tickMarkPosition="above" sliderType="linear" id="UNn-Zj-qRO"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="40" maxValue="100" doubleValue="90" tickMarkPosition="above" sliderType="linear" id="UNn-Zj-qRO"/>
                                 <connections>
                                     <action selector="adjustSlider:" target="XfG-lQ-9wD" id="9BP-Ub-RDw"/>
                                 </connections>

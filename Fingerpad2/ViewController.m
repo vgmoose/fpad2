@@ -93,7 +93,7 @@
 
 - (IBAction)adjustSlider:(id)sender
 {
-    [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*2))];
+    [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*3))];
 }
 
 - (void)initRectPatches
@@ -109,7 +109,7 @@
     [self.view addSubview:_rightView];
 
     
-    [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*2))];
+    [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*3))];
 }
 
 - (void)viewDidLoad
