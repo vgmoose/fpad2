@@ -15,8 +15,11 @@
 @property NSView* botView;
 @property NSView* leftView;
 @property NSView* rightView;
+
+- (void)updateRectPatches:(float)percent;
 @end
 
 typedef enum{
     Top=0, Bottom=1, Left=2, Right=3
 } Position;
+

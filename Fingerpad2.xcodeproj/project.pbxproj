@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C579FFB1ADA5D8D00BC3AD7 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C579FFA1ADA5D8D00BC3AD7 /* View.m */; };
 		9CFC90751AA4ECFE001E3ABA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC90741AA4ECFE001E3ABA /* AppDelegate.m */; };
 		9CFC90771AA4ECFE001E3ABA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC90761AA4ECFE001E3ABA /* main.m */; };
 		9CFC907A1AA4ECFE001E3ABA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC90791AA4ECFE001E3ABA /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C579FF91ADA5D8D00BC3AD7 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
+		9C579FFA1ADA5D8D00BC3AD7 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
 		9CFC906E1AA4ECFE001E3ABA /* Fingerpad2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fingerpad2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CFC90721AA4ECFE001E3ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CFC90731AA4ECFE001E3ABA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				9CFC907B1AA4ECFE001E3ABA /* Images.xcassets */,
 				9CFC907D1AA4ECFE001E3ABA /* Main.storyboard */,
 				9CFC90711AA4ECFE001E3ABA /* Supporting Files */,
+				9C579FF91ADA5D8D00BC3AD7 /* View.h */,
+				9C579FFA1ADA5D8D00BC3AD7 /* View.m */,
 			);
 			path = Fingerpad2;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C579FFB1ADA5D8D00BC3AD7 /* View.m in Sources */,
 				9CFC907A1AA4ECFE001E3ABA /* ViewController.m in Sources */,
 				9CFC90771AA4ECFE001E3ABA /* main.m in Sources */,
 				9CFC90751AA4ECFE001E3ABA /* AppDelegate.m in Sources */,
@@ -408,6 +414,7 @@
 				9CFC90901AA4ECFF001E3ABA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9CFC90911AA4ECFF001E3ABA /* Build configuration list for PBXNativeTarget "Fingerpad2Tests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +423,7 @@
 				9CFC90931AA4ECFF001E3ABA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
