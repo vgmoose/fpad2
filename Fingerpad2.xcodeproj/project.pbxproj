@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C579FFB1ADA5D8D00BC3AD7 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C579FFA1ADA5D8D00BC3AD7 /* View.m */; };
 		9CB233301ADC6DC000601746 /* PadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2332F1ADC6DC000601746 /* PadView.m */; };
+		9CB233321ADC86A400601746 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB233311ADC86A400601746 /* Carbon.framework */; };
 		9CFC90751AA4ECFE001E3ABA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC90741AA4ECFE001E3ABA /* AppDelegate.m */; };
 		9CFC90771AA4ECFE001E3ABA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC90761AA4ECFE001E3ABA /* main.m */; };
 		9CFC907A1AA4ECFE001E3ABA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC90791AA4ECFE001E3ABA /* ViewController.m */; };
@@ -33,6 +34,7 @@
 		9C579FFA1ADA5D8D00BC3AD7 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
 		9CB2332E1ADC6DC000601746 /* PadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadView.h; sourceTree = "<group>"; };
 		9CB2332F1ADC6DC000601746 /* PadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadView.m; sourceTree = "<group>"; };
+		9CB233311ADC86A400601746 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		9CFC906E1AA4ECFE001E3ABA /* Fingerpad2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fingerpad2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CFC90721AA4ECFE001E3ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CFC90731AA4ECFE001E3ABA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CB233321ADC86A400601746 /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +72,7 @@
 		9CFC90651AA4ECFE001E3ABA = {
 			isa = PBXGroup;
 			children = (
+				9CB233311ADC86A400601746 /* Carbon.framework */,
 				9CFC90701AA4ECFE001E3ABA /* Fingerpad2 */,
 				9CFC90871AA4ECFF001E3ABA /* Fingerpad2Tests */,
 				9CFC906F1AA4ECFE001E3ABA /* Products */,

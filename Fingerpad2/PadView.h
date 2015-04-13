@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
 
 @interface PadView : NSView
 - (void) updateTrackingArea:(NSRect) r;
 @property NSTrackingArea* trackingArea;
 @property NSString* name;
+@property int direction;
 @end

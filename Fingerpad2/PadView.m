@@ -23,22 +23,24 @@
                     options:NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways
                     owner:self userInfo:nil];
     [self addTrackingArea:_trackingArea];
-    
-//    NSLog(@"%@ %f %f", _name, _trackingArea.rect.origin.x, _trackingArea.rect.origin.y);
-//    NSLog(@"%@ %f %f", _name, _trackingArea.rect.size.width, _trackingArea.rect.size.height);
+
 
 }
 
 
 - (void)mouseEntered:(NSEvent *)theEvent{
-    NSLog([NSString stringWithFormat:@"%@ entered", _name]);
-    
+    // press the appropriate direction
+    CGEventRef e1 = CGEventCreateKeyboardEvent ( 0, (CGKeyCode)(kVK_LeftArrow+_direction), true );
+    CGEventPost(kCGSessionEventTap, e1);
+    CFRelease(e1);
     
 }
 
 - (void)mouseExited:(NSEvent *)theEvent{
-    NSLog([NSString stringWithFormat:@"%@ exited", _name]);
-    
+    // release the appropriate direction
+    CGEventRef e1 = CGEventCreateKeyboardEvent ( 0, (CGKeyCode)(kVK_LeftArrow+_direction), false );
+    CGEventPost(kCGSessionEventTap, e1);
+    CFRelease(e1);
 }
 
 @end

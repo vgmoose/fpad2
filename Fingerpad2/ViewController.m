@@ -109,11 +109,13 @@
     _rightView = [[PadView alloc] initWithFrame:self.view.frame];
     
     _topView.name = @"top";
+    _topView.direction = 3;
     _botView.name = @"bottom";
+    _botView.direction = 2;
     _leftView.name = @"left";
+    _leftView.direction = 0;
     _rightView.name = @"right";
-
-    
+    _rightView.direction = 1;
     
     [self.view addSubview:_topView];
     [self.view addSubview:_botView];
