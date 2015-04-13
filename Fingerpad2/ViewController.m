@@ -64,7 +64,7 @@
 - (void)updateRect:(int)position withPercent:(float)percent
 {
     NSArray* views = @[_topView, _botView, _leftView, _rightView];
-    NSView* activeView = views[position];
+    PadView* activeView = views[position];
     
     CGRect targetFrame = self.view.frame;
     CALayer *viewLayer = [CALayer layer];
@@ -82,14 +82,18 @@
             [viewLayer setBackgroundColor:CGColorCreateGenericRGB(0.0, 0.0, 1.0, 0.4)];
     }
     
+    [activeView updateTrackingArea:targetFrame];
+    
     if (position == Top)
         targetFrame.origin.y = self.view.frame.size.height*(1-percent);
     else if (position == Right)
         targetFrame.origin.x = self.view.frame.size.width*(1-percent);
     
+    
     [activeView setFrame:targetFrame];
     [activeView setWantsLayer:YES];
     [activeView setLayer:viewLayer];
+    
 }
 
 - (IBAction)adjustSlider:(id)sender
@@ -99,10 +103,17 @@
 
 - (void)initRectPatches
 {
-    _topView = [[NSView alloc] initWithFrame:self.view.frame];
-    _botView = [[NSView alloc] initWithFrame:self.view.frame];
-    _leftView = [[NSView alloc] initWithFrame:self.view.frame];
-    _rightView = [[NSView alloc] initWithFrame:self.view.frame];
+    _topView = [[PadView alloc] initWithFrame:self.view.frame];
+    _botView = [[PadView alloc] initWithFrame:self.view.frame];
+    _leftView = [[PadView alloc] initWithFrame:self.view.frame];
+    _rightView = [[PadView alloc] initWithFrame:self.view.frame];
+    
+    _topView.name = @"top";
+    _botView.name = @"bottom";
+    _leftView.name = @"left";
+    _rightView.name = @"right";
+
+    
     
     [self.view addSubview:_topView];
     [self.view addSubview:_botView];

@@ -7,14 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PadView.h"
 
 @interface ViewController : NSViewController
 @property (weak) IBOutlet NSSlider *sliderBar;
 @property BOOL activated;
-@property NSView* topView;
-@property NSView* botView;
-@property NSView* leftView;
-@property NSView* rightView;
+@property PadView* topView;
+@property PadView* botView;
+@property PadView* leftView;
+@property PadView* rightView;
 
 - (void)updateRectPatches:(float)percent;
 @end

@@ -21,7 +21,6 @@
     ViewController* vc = (ViewController*)self.window.contentViewController;
     
     [vc updateRectPatches:(vc.sliderBar.floatValue/(vc.sliderBar.maxValue*3))];
-    NSLog(@"a");
     [super setFrameSize:newSize];
 }
 
