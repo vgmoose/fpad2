@@ -16,8 +16,12 @@
     // get the window object
     NSWindow* window = [[[NSApplication sharedApplication] windows] objectAtIndex:0];
     
+    
+    // toggle activated state
+    self.activated = !self.activated;
+    
     // hide or show the title bar
-    if (self.activated)
+    if (!self.activated)
     {
         [window setStyleMask:NSClosableWindowMask|NSMiniaturizableWindowMask|NSTitledWindowMask|NSResizableWindowMask];
         
@@ -31,20 +35,32 @@
         
         // unset always on top
         [window setLevel:NO];
-
+        
+        [window setBackgroundColor:nil];
+        [window setOpaque:YES];
+        
+        [[self.view animator] setAlphaValue:1.0];
+        [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*3))];
         
     }
     else
     {
-        [window setStyleMask:NSBorderlessWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask];
+        [window setStyleMask:NSBorderlessWindowMask];
         
         // set always on top
         [window setLevel:NSFloatingWindowLevel];
+        
+        [window setOpaque:NO];
+        
+        NSColor *semiTransparentBlue =
+        [NSColor colorWithDeviceRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+        [window setBackgroundColor:semiTransparentBlue];
+
+        [[self.view animator] setAlphaValue:0.0];
+        [self updateRectPatches:(_sliderBar.floatValue/(_sliderBar.maxValue*3))];
+
+
     }
-    
-    
-    // toggle activated state
-    self.activated = !self.activated;
     
     // get appropriate string text
     NSString* startOrStop = self.activated? @"Stop" : @"Start";
@@ -68,19 +84,26 @@
     
     CGRect targetFrame = self.view.frame;
     CALayer *viewLayer = [CALayer layer];
-    
-    switch(position)
-    {
-        case Top:
-        case Bottom:
-            targetFrame.size.height *= percent;
-            [viewLayer setBackgroundColor:CGColorCreateGenericRGB(1.0, 0.0, 0.0, 0.4)];
-            break;
-        case Left:
-        case Right:
-            targetFrame.size.width *= percent;
-            [viewLayer setBackgroundColor:CGColorCreateGenericRGB(0.0, 0.0, 1.0, 0.4)];
-    }
+
+//    if (!_activated)
+//    {
+        switch(position)
+        {
+            case Top:
+            case Bottom:
+                targetFrame.size.height *= percent;
+                [viewLayer setBackgroundColor:CGColorCreateGenericRGB(1.0, 0.0, 0.0, 0.4)];
+                break;
+            case Left:
+            case Right:
+                targetFrame.size.width *= percent;
+                [viewLayer setBackgroundColor:CGColorCreateGenericRGB(0.0, 0.0, 1.0, 0.4)];
+        }
+//    }
+//    else
+//    {
+//        [viewLayer setBackgroundColor:nil];
+//    }
     
     [activeView updateTrackingArea:targetFrame];
     
@@ -103,6 +126,8 @@
 
 - (void)initRectPatches
 {
+    NSWindow* window = [[[NSApplication sharedApplication] windows] objectAtIndex:0];
+
     _topView = [[PadView alloc] initWithFrame:self.view.frame];
     _botView = [[PadView alloc] initWithFrame:self.view.frame];
     _leftView = [[PadView alloc] initWithFrame:self.view.frame];

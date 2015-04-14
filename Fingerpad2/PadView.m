@@ -7,6 +7,7 @@
 //
 
 #import "PadView.h"
+#import "ViewController.h"
 
 @implementation PadView
 
@@ -29,10 +30,14 @@
 
 
 - (void)mouseEntered:(NSEvent *)theEvent{
-    // press the appropriate direction
-    CGEventRef e1 = CGEventCreateKeyboardEvent ( 0, (CGKeyCode)(kVK_LeftArrow+_direction), true );
-    CGEventPost(kCGSessionEventTap, e1);
-    CFRelease(e1);
+    
+    if (((ViewController*)self.window.contentViewController).activated)
+    {
+        // press the appropriate direction
+        CGEventRef e1 = CGEventCreateKeyboardEvent ( 0, (CGKeyCode)(kVK_LeftArrow+_direction), true );
+        CGEventPost(kCGSessionEventTap, e1);
+        CFRelease(e1);
+    }
     
 }
 
